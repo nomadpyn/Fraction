@@ -12,10 +12,32 @@ class Fraction
 public:
 	Fraction(int numP, int denP)
 		: num{ numP }, den{ denP }{
+		reduct();
 		}
 	Fraction() : Fraction(1, 1) {}
 	~Fraction() {}	
+	void setNod() {
+		int x = this->num;
+		int y = this->den;
+		while (x != y) {
+			if (x > y) {
+				x = x - y;
+			}
+			else {
+				y = y - x;
+			}
+		}
+		this->nod = x;
+	}
+	void reduct() {
+		setNod();
+		this->num = this->num / this->nod;
+		this->den = this->den / this->nod;
+
+	}
+
 	void print(){
+		cout << nod << endl;
 		if (num < 0) {
 			cout << "  "<<num * -1 <<endl;
 			cout << "- -" << endl;
@@ -44,12 +66,14 @@ public:
 			c.den = a.den * b.den;
 			c.num = (a.num*b.den)+(b.num*a.den);
 		}
+		c.reduct();
 		return c;
 	}
 	Fraction sum(Fraction a, int b) {
 		Fraction c;
 		c.den = a.den;
 		c.num = a.num + (b * a.den);
+		c.reduct();
 		return c;
 	}
 	Fraction subt(Fraction a, Fraction b) {
@@ -66,38 +90,43 @@ public:
 			c.den = 0;
 			c.num = 0;
 		}
+		c.reduct();
 		return c;
 	}
 	Fraction subt(Fraction a, int b) {
 		Fraction c;
 		c.den = a.den;
 		c.num = a.num - (b * a.den);
+		c.reduct();
 		return c;
 	}
 	Fraction mult(Fraction a, Fraction b) {
 		Fraction c;
 		c.num = a.num * b.num;
 		c.den = a.den * b.den;
+		c.reduct();
 		return c;
 	}
 	Fraction mult(Fraction a, int b) {
 		Fraction c;
 		c.num = a.num * b;
 		c.den = a.den;
+		c.reduct();
 		return c;
 	}
 };
 int main()
 {
 	
-	Fraction a(1, 5);
+	Fraction a(1, 18);
 	a.print();
-	Fraction b(2,5);
+	Fraction b(2, 5);
 	Fraction c;
-	int d = 4;
-	c = c.subt(a,b);
+	int d = 24;
+	c = c.mult(a,d);
 	c.print();
 	
 	return 0;
 	
 }
+
