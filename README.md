@@ -1,3 +1,2 @@
 # Fraction
-    Task Fraction
-    ![Screenshot](task.jpg)
+![Screenshot](task.jpg)
