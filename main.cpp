@@ -19,6 +19,8 @@ public:
 	void setNod() {
 		int x = this->num;
 		int y = this->den;
+		if (x < 0)
+			x = x * -1;
 		while (x != y) {
 			if (x > y) {
 				x = x - y;
@@ -37,7 +39,6 @@ public:
 	}
 
 	void print(){
-		cout << nod << endl;
 		if (num < 0) {
 			cout << "  "<<num * -1 <<endl;
 			cout << "- -" << endl;
@@ -48,6 +49,7 @@ public:
 			cout << "  -" << endl;
 			cout << "  " << den << endl;
 		}
+		cout << endl;
 			
 	}
 	void setNum(int num) {
@@ -119,11 +121,21 @@ int main()
 {
 	
 	Fraction a(1, 18);
-	a.print();
 	Fraction b(2, 5);
 	Fraction c;
 	int d = 24;
-	c = c.mult(a,d);
+	c = c.sum(a, b);
+	c.print();
+	c = c.sum(a, d);
+	c.print();
+	c = c.subt(a, b);
+	c.print();
+	c = c.subt(a, d);
+	c.print();
+	c.print();
+	c = c.mult(a, b);
+	c.print();
+	c = c.mult(a, d);
 	c.print();
 	
 	return 0;
