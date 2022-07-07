@@ -2,20 +2,25 @@
 #include<algorithm>
 
 using namespace std;
-
+// класс Дробь
 class Fraction
 {
+// поля для числителя, знаменателя и наибольшего общего делителя
 	int num{};
 	int den{};
 	int nod{};
 	
 public:
+// конструктор с параметрами у методом сокращения дроби
 	Fraction(int numP, int denP)
 		: num{ numP }, den{ denP }{
 		reduct();
 		}
+// конструктор по умолчанию		
 	Fraction() : Fraction(1, 1) {}
+// деструктор	
 	~Fraction() {}	
+// вычисление наибольшего общего делителя	
 	void setNod() {
 		int x = this->num;
 		int y = this->den;
@@ -31,14 +36,15 @@ public:
 		}
 		this->nod = x;
 	}
+// метод сокращения дроби	
 	void reduct() {
 		setNod();
 		this->num = this->num / this->nod;
 		this->den = this->den / this->nod;
 
 	}
-
-	void print(){
+// метод вывода дроби на экран
+	void print() const{
 		if (num < 0) {
 			cout << "  "<<num * -1 <<endl;
 			cout << "- -" << endl;
@@ -52,12 +58,15 @@ public:
 		cout << endl;
 			
 	}
+// сеттер для числителя	
 	void setNum(int num) {
 		this->num = num;
 	}
+// сеттер для знаменателя	
 	void setDen(int den) {
 		this->den = den;
 	}
+// метод вычисления суммы двух дробей	
 	Fraction sum(Fraction a, Fraction b) {
 		Fraction c;
 		if (a.den == b.den) {
@@ -71,6 +80,7 @@ public:
 		c.reduct();
 		return c;
 	}
+// метод вычисления суммы дроби и целого числа	
 	Fraction sum(Fraction a, int b) {
 		Fraction c;
 		c.den = a.den;
@@ -78,6 +88,7 @@ public:
 		c.reduct();
 		return c;
 	}
+// метод вычисления разности двух дробей
 	Fraction subt(Fraction a, Fraction b) {
 		Fraction c;
 		if (a.den == b.den) {
@@ -95,6 +106,7 @@ public:
 		c.reduct();
 		return c;
 	}
+// метод вычисления разности дроби и целого числа
 	Fraction subt(Fraction a, int b) {
 		Fraction c;
 		c.den = a.den;
@@ -102,6 +114,7 @@ public:
 		c.reduct();
 		return c;
 	}
+// метод вычисления произведения двух дробей
 	Fraction mult(Fraction a, Fraction b) {
 		Fraction c;
 		c.num = a.num * b.num;
@@ -109,6 +122,7 @@ public:
 		c.reduct();
 		return c;
 	}
+// метод вычисления произведения дроби и целого числа	
 	Fraction mult(Fraction a, int b) {
 		Fraction c;
 		c.num = a.num * b;

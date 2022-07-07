@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+*.vsidx
+*.lock
+.vs/Fraction/v17/.suo
+*.db
+*.json
+*.ipch
+*.sqlite
